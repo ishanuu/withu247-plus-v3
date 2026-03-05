@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users } from "../drizzle/schema";
+import { InsertUser, users, chatHistory, emotionLogs, symptomRecords, doctorMappings } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -89,4 +89,92 @@ export async function getUserByOpenId(openId: string) {
   return result.length > 0 ? result[0] : undefined;
 }
 
-// TODO: add feature queries here as your schema grows.
+// Chat history queries
+export async function getChatHistory(userId: number, limit: number = 50) {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(chatHistory).where(eq(chatHistory.userId, userId)).limit(limit);
+}
+
+export async function addChatMessage(
+  userId: number,
+  role: 'user' | 'assistant',
+  content: string,
+  sentiment?: string,
+  sentimentScore?: number,
+  sources?: string
+) {
+  const db = await getDb();
+  if (!db) return null;
+  const result = await db.insert(chatHistory).values({
+    userId,
+    role,
+    content,
+    sentiment,
+    sentimentScore,
+    sources,
+  });
+  return result;
+}
+
+// Emotion log queries
+export async function addEmotionLog(
+  userId: number,
+  dominantEmotion: string,
+  emotionProbs: string,
+  negativeEmotionScore: number,
+  imageUrl?: string
+) {
+  const db = await getDb();
+  if (!db) return null;
+  const result = await db.insert(emotionLogs).values({
+    userId,
+    dominantEmotion,
+    emotionProbs,
+    negativeEmotionScore,
+    imageUrl,
+  });
+  return result;
+}
+
+// Symptom record queries
+export async function addSymptomRecord(
+  userId: number,
+  symptom: string,
+  possibleConditions: string,
+  severityScore: number,
+  riskClassification: string,
+  pubmedSources: string,
+  recommendedNextSteps?: string
+) {
+  const db = await getDb();
+  if (!db) return null;
+  const result = await db.insert(symptomRecords).values({
+    userId,
+    symptom,
+    possibleConditions,
+    severityScore,
+    riskClassification,
+    pubmedSources,
+    recommendedNextSteps,
+  });
+  return result;
+}
+
+// Doctor mapping queries
+export async function getDoctorSpecialty(symptom: string) {
+  const db = await getDb();
+  if (!db) return null;
+  const result = await db.select().from(doctorMappings).where(eq(doctorMappings.symptom, symptom)).limit(1);
+  return result.length > 0 ? result[0] : null;
+}
+
+export async function addDoctorMapping(symptom: string, specialty: string) {
+  const db = await getDb();
+  if (!db) return null;
+  const result = await db.insert(doctorMappings).values({
+    symptom,
+    specialty,
+  });
+  return result;
+}
