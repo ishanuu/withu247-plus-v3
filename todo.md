@@ -52,18 +52,18 @@
 - [ ] Verify emotion probabilities change based on face image
 
 ## PHASE 5 — MediSync Integration
-- [ ] Symptom analysis engine
-- [ ] Disease likelihood mapping
-- [ ] Doctor specialty recommendation
-- [ ] Medicine information lookup
-- [ ] Treatment summary generation
-- [ ] PubMed research retrieval
-- [ ] Output: possible_conditions
-- [ ] Output: recommended_specialist
-- [ ] Output: treatment_summary
-- [ ] Output: medical_sources
-- [ ] Verify symptom analysis returns real data
-- [ ] Verify doctor specialties generated correctly
+- [x] Symptom analysis engine
+- [x] Disease likelihood mapping
+- [x] Doctor specialty recommendation
+- [x] Medicine information lookup
+- [x] Treatment summary generation
+- [x] PubMed research retrieval
+- [x] Output: possible_conditions
+- [x] Output: recommended_specialist
+- [x] Output: treatment_summary
+- [x] Output: medical_sources
+- [x] Verify symptom analysis returns real data
+- [x] Verify doctor specialties generated correctly
 
 ## PHASE 6 — Risk Fusion Engine
 - [ ] Normalize inputs (0–1 scale)

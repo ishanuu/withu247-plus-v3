@@ -6,6 +6,7 @@ import connectDB from './config/database.js';
 import authRoutes from './routes/authRoutes.js';
 import chatRoutes from './routes/chatRoutes.js';
 import emotionRoutes from './routes/emotionRoutes.js';
+import medisyncRoutes from './routes/medisyncRoutes.js';
 import { authenticateToken } from './middleware/auth.js';
 import { calculateRisk } from './risk-engine/index.js';
 import { handleEscalation } from './escalation/index.js';
@@ -24,6 +25,7 @@ await connectDB();
 app.use('/api/auth', authRoutes);
 app.use('/api/chat', chatRoutes);
 app.use('/api/emotion', emotionRoutes);
+app.use('/api/medisync', medisyncRoutes);
 
 // Health check endpoint
 app.get('/health', (req, res) => {
