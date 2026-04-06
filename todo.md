@@ -66,15 +66,15 @@
 - [x] Verify doctor specialties generated correctly
 
 ## PHASE 6 — Risk Fusion Engine
-- [ ] Normalize inputs (0–1 scale)
-- [ ] Configurable weights α β γ
-- [ ] Risk classification logic (low/medium/high)
-- [ ] Escalation recommendation
-- [ ] Risk formula: α(symptom) + β(emotion) + γ(sentiment)
-- [ ] Low risk → self care
-- [ ] Medium risk → consult doctor
-- [ ] High risk → urgent attention
-- [ ] Verify risk score changes with emotion and symptoms
+- [x] Normalize inputs (0–1 scale)
+- [x] Configurable weights α β γ
+- [x] Risk classification logic (low/medium/high)
+- [x] Escalation recommendation
+- [x] Risk formula: α(symptom) + β(emotion) + γ(sentiment)
+- [x] Low risk → self care
+- [x] Medium risk → consult doctor
+- [x] High risk → urgent attention
+- [x] Verify risk score changes with emotion and symptoms
 
 ## PHASE 7 — Backend API Implementation
 - [x] POST /api/auth/register
