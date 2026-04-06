@@ -89,11 +89,11 @@
 - [x] Proper error handling on all endpoints
 
 ## PHASE 8 — Google Maps Doctor Finder
-- [ ] Integrate Google Maps Places API
-- [ ] Find nearby hospitals
-- [ ] Find nearby specialists
-- [ ] Return hospital ratings and distance
-- [ ] Verify nearby doctors API returns real map data
+- [x] Integrate Google Maps Places API
+- [x] Find nearby hospitals
+- [x] Find nearby specialists
+- [x] Return hospital ratings and distance
+- [x] Verify nearby doctors API returns real map data
 
 ## PHASE 9 — Frontend UI
 - [ ] Dashboard section

@@ -8,6 +8,7 @@ import chatRoutes from './routes/chatRoutes.js';
 import emotionRoutes from './routes/emotionRoutes.js';
 import medisyncRoutes from './routes/medisyncRoutes.js';
 import riskRoutes from './routes/riskRoutes.js';
+import mapsRoutes from './routes/mapsRoutes.js';
 import { authenticateToken } from './middleware/auth.js';
 import { calculateRisk } from './risk-engine/index.js';
 import { handleEscalation } from './escalation/index.js';
@@ -28,6 +29,7 @@ app.use('/api/chat', chatRoutes);
 app.use('/api/emotion', emotionRoutes);
 app.use('/api/medisync', medisyncRoutes);
 app.use('/api/risk', riskRoutes);
+app.use('/api/maps', mapsRoutes);
 
 // Health check endpoint
 app.get('/health', (req, res) => {
