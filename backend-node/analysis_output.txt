@@ -1,0 +1,49 @@
+🚀 STARTING COMPREHENSIVE BACKEND ANALYSIS...
+
+
+📊 ANALYZING CODE QUALITY...
+
+✅ Code Quality Analysis Complete
+   Total Files: 34
+   Total Lines: 4432
+   Average File Size: 130 lines
+   Issues Found: 5
+   Large Files (>300 lines): 5
+
+🔐 ANALYZING SECURITY...
+
+✅ Security Analysis Complete
+   Total Issues: 7
+   Critical: 0
+   High: 7
+   Medium: 0
+
+⚡ ANALYZING PERFORMANCE...
+
+✅ Performance Analysis Complete
+   Total Issues: 7
+   Critical: 0
+   High: 0
+   Medium: 6
+
+🏗️  ANALYZING INFRASTRUCTURE...
+
+node:fs:442
+    return binding.readFileUtf8(path, stringToFlags(options.flag));
+                   ^
+
+Error: EISDIR: illegal operation on a directory, read
+    at Object.readFileSync (node:fs:442:20)
+    at file:///home/ubuntu/withu247-plus/backend-node/test-analysis.js:341:8
+    at Array.some (<anonymous>)
+    at analyzeInfrastructure (file:///home/ubuntu/withu247-plus/backend-node/test-analysis.js:340:46)
+    at file:///home/ubuntu/withu247-plus/backend-node/test-analysis.js:509:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:116:5) {
+  errno: -21,
+  code: 'EISDIR',
+  syscall: 'read'
+}
+
+Node.js v22.13.0

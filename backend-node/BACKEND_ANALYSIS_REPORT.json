@@ -1,0 +1,239 @@
+{
+  "timestamp": "2026-04-09T08:06:35.502Z",
+  "summary": {},
+  "codeQuality": {
+    "fileStats": {
+      "totalFiles": 34,
+      "totalLines": 4457,
+      "averageFileSize": 131,
+      "largeFiles": [
+        {
+          "file": "/controllers/medisyncController.js",
+          "lines": 311
+        },
+        {
+          "file": "/maps/googleMapsService.js",
+          "lines": 433
+        },
+        {
+          "file": "/medisync/symptomAnalyzer.js",
+          "lines": 357
+        },
+        {
+          "file": "/risk-engine/riskFusionEngine.js",
+          "lines": 305
+        },
+        {
+          "file": "/test-analysis.js",
+          "lines": 539
+        }
+      ]
+    },
+    "issues": [
+      {
+        "file": "/models/User.js",
+        "type": "Incomplete error handling",
+        "tryCatchBlocks": 1,
+        "logStatements": 0
+      },
+      {
+        "file": "/server.js",
+        "type": "TODO/FIXME comments",
+        "count": 4
+      },
+      {
+        "file": "/test-analysis.js",
+        "type": "TODO/FIXME comments",
+        "count": 6
+      },
+      {
+        "file": "/test-analysis.js",
+        "type": "Incomplete error handling",
+        "tryCatchBlocks": 6,
+        "logStatements": 0
+      },
+      {
+        "file": "/test_risk_engine.js",
+        "type": "console.log usage",
+        "severity": "medium"
+      }
+    ],
+    "summary": {
+      "totalFiles": 34,
+      "totalLines": 4457,
+      "averageFileSize": 131,
+      "issuesFound": 5,
+      "largeFiles": 5
+    }
+  },
+  "performance": {
+    "checks": {
+      "missingCaching": 6,
+      "inefficientQueries": 0,
+      "missingIndexes": 0,
+      "largePayloads": 0
+    },
+    "issues": [
+      {
+        "file": "/controllers/authController.js",
+        "type": "Missing caching strategy",
+        "severity": "medium"
+      },
+      {
+        "file": "/controllers/chatController.js",
+        "type": "Missing caching strategy",
+        "severity": "medium"
+      },
+      {
+        "file": "/controllers/emotionController.js",
+        "type": "Missing caching strategy",
+        "severity": "medium"
+      },
+      {
+        "file": "/controllers/medisyncController.js",
+        "type": "Missing caching strategy",
+        "severity": "medium"
+      },
+      {
+        "file": "/controllers/riskController.js",
+        "type": "Missing caching strategy",
+        "severity": "medium"
+      },
+      {
+        "file": "/medisync/symptomAnalyzer.js",
+        "type": "Missing caching strategy",
+        "severity": "medium"
+      },
+      {
+        "file": "/server.js",
+        "type": "Potential large response payload",
+        "severity": "low"
+      }
+    ],
+    "summary": {
+      "totalIssues": 7,
+      "criticalIssues": 0,
+      "highIssues": 0,
+      "mediumIssues": 6
+    }
+  },
+  "security": {
+    "checks": {
+      "hardcodedSecrets": 0,
+      "sqlInjectionRisks": 0,
+      "xssRisks": 0,
+      "corsIssues": 0,
+      "authenticationGaps": 0
+    },
+    "issues": [
+      {
+        "file": "/config/jwt.js",
+        "type": "Unencrypted sensitive data",
+        "severity": "high"
+      },
+      {
+        "file": "/controllers/authController.js",
+        "type": "Unencrypted sensitive data",
+        "severity": "high"
+      },
+      {
+        "file": "/middleware/auth.js",
+        "type": "Unencrypted sensitive data",
+        "severity": "high"
+      },
+      {
+        "file": "/middleware/errorHandler.js",
+        "type": "Unencrypted sensitive data",
+        "severity": "high"
+      },
+      {
+        "file": "/middleware/requestLogger.js",
+        "type": "Unencrypted sensitive data",
+        "severity": "high"
+      },
+      {
+        "file": "/middleware/validation.js",
+        "type": "Unencrypted sensitive data",
+        "severity": "high"
+      },
+      {
+        "file": "/models/User.js",
+        "type": "Unencrypted sensitive data",
+        "severity": "high"
+      }
+    ],
+    "summary": {
+      "totalIssues": 7,
+      "criticalIssues": 0,
+      "highIssues": 7,
+      "mediumIssues": 0
+    }
+  },
+  "infrastructure": {
+    "issues": [
+      {
+        "component": "Database",
+        "issue": "No connection pooling configured",
+        "severity": "high",
+        "recommendation": "Add connection pool configuration"
+      },
+      {
+        "component": "Database",
+        "issue": "No retry logic for failed connections",
+        "severity": "medium",
+        "recommendation": "Add automatic retry mechanism"
+      }
+    ],
+    "summary": {
+      "totalIssues": 2,
+      "criticalIssues": 0,
+      "highIssues": 1,
+      "mediumIssues": 1
+    }
+  },
+  "enterprise": {
+    "missingFeatures": [
+      {
+        "feature": "API Versioning",
+        "status": "Not Implemented",
+        "priority": "medium"
+      },
+      {
+        "feature": "Rate Limiting",
+        "status": "Not Implemented",
+        "priority": "medium"
+      },
+      {
+        "feature": "Audit Trail",
+        "status": "Not Implemented",
+        "priority": "medium"
+      },
+      {
+        "feature": "Multi-tenancy",
+        "status": "Not Implemented",
+        "priority": "medium"
+      },
+      {
+        "feature": "OAuth2",
+        "status": "Not Implemented",
+        "priority": "medium"
+      },
+      {
+        "feature": "Encryption",
+        "status": "Not Implemented",
+        "priority": "medium"
+      },
+      {
+        "feature": "GraphQL",
+        "status": "Not Implemented",
+        "priority": "medium"
+      }
+    ],
+    "summary": {
+      "totalFeatures": 10,
+      "implementedFeatures": 3,
+      "missingFeatures": 7,
+      "completeness": 30
+    }
+  }
+}
