@@ -4,8 +4,15 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { NotificationProvider } from "./contexts/NotificationContext";
+import { ToastContainer } from "./components/Toast/ToastContainer";
 import Home from "./pages/Home";
 import HealthDashboard from "./pages/HealthDashboard";
+import Dashboard from "./pages/Dashboard";
+import Users from "./pages/Users";
+import Analytics from "./pages/Analytics";
+import Settings from "./pages/Settings";
+import AdminDashboard from "./pages/AdminDashboard";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -13,6 +20,11 @@ function Router() {
     <Switch>
       <Route path="" component={Home} />
       <Route path="/health" component={HealthDashboard} />
+      <Route path="/dashboard" component={Dashboard} />
+      <Route path="/users" component={Users} />
+      <Route path="/analytics" component={Analytics} />
+      <Route path="/settings" component={Settings} />
+      <Route path="/admin" component={AdminDashboard} />
       <Route path="/404" component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
@@ -32,10 +44,13 @@ function App() {
         defaultTheme="dark"
         // switchable
       >
-        <TooltipProvider>
-          <Toaster />
-          <Router />
-        </TooltipProvider>
+        <NotificationProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Router />
+            <ToastContainer />
+          </TooltipProvider>
+        </NotificationProvider>
       </ThemeProvider>
     </ErrorBoundary>
   );
