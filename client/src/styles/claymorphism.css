@@ -1,0 +1,389 @@
+/* Claymorphism Design System */
+/* Soft, organic, and tactile aesthetic inspired by clay and soft materials */
+
+:root {
+  /* Primary Color Palette - Warm, earthy tones */
+  --clay-primary: #8B7355;
+  --clay-primary-light: #A0826D;
+  --clay-primary-lighter: #B59585;
+  --clay-primary-dark: #6B5344;
+  --clay-primary-darker: #4B3324;
+
+  /* Secondary Color Palette - Soft pastels */
+  --clay-secondary: #D4A574;
+  --clay-secondary-light: #E8C4A0;
+  --clay-secondary-lighter: #F5DCC8;
+  --clay-secondary-dark: #C49460;
+  --clay-secondary-darker: #B08450;
+
+  /* Accent Colors */
+  --clay-accent-warm: #E8A87C;
+  --clay-accent-cool: #7FA8A8;
+  --clay-accent-vibrant: #C9845C;
+
+  /* Neutral Palette */
+  --clay-bg-primary: #FAF8F3;
+  --clay-bg-secondary: #F5F2ED;
+  --clay-bg-tertiary: #EFE9E0;
+  --clay-bg-dark: #2A2420;
+  --clay-bg-darker: #1A1410;
+
+  /* Text Colors */
+  --clay-text-primary: #2A2420;
+  --clay-text-secondary: #5A5450;
+  --clay-text-tertiary: #8A8480;
+  --clay-text-light: #C4B8B0;
+  --clay-text-lighter: #E8DCD0;
+
+  /* Border & Shadow */
+  --clay-border: #D4C8BC;
+  --clay-border-light: #E8DCD0;
+  --clay-border-dark: #A89880;
+
+  /* Shadows - Soft and organic */
+  --clay-shadow-sm: 0 2px 8px rgba(42, 36, 32, 0.08);
+  --clay-shadow-md: 0 4px 16px rgba(42, 36, 32, 0.12);
+  --clay-shadow-lg: 0 8px 24px rgba(42, 36, 32, 0.16);
+  --clay-shadow-xl: 0 12px 32px rgba(42, 36, 32, 0.2);
+
+  /* Inset Shadows - For depth */
+  --clay-inset-sm: inset 0 2px 4px rgba(42, 36, 32, 0.05);
+  --clay-inset-md: inset 0 4px 8px rgba(42, 36, 32, 0.1);
+
+  /* Gradients */
+  --clay-gradient-primary: linear-gradient(135deg, #8B7355 0%, #A0826D 100%);
+  --clay-gradient-secondary: linear-gradient(135deg, #D4A574 0%, #E8C4A0 100%);
+  --clay-gradient-warm: linear-gradient(135deg, #E8A87C 0%, #C9845C 100%);
+  --clay-gradient-cool: linear-gradient(135deg, #7FA8A8 0%, #A0C4C4 100%);
+
+  /* Spacing - Organic and balanced */
+  --clay-spacing-xs: 0.25rem;
+  --clay-spacing-sm: 0.5rem;
+  --clay-spacing-md: 1rem;
+  --clay-spacing-lg: 1.5rem;
+  --clay-spacing-xl: 2rem;
+  --clay-spacing-2xl: 3rem;
+  --clay-spacing-3xl: 4rem;
+
+  /* Border Radius - Soft and rounded */
+  --clay-radius-sm: 8px;
+  --clay-radius-md: 12px;
+  --clay-radius-lg: 16px;
+  --clay-radius-xl: 20px;
+  --clay-radius-2xl: 24px;
+  --clay-radius-full: 9999px;
+
+  /* Transitions - Smooth and organic */
+  --clay-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --clay-transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --clay-transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Backdrop Blur */
+  --clay-backdrop-blur: blur(10px);
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --clay-bg-primary: #1A1410;
+    --clay-bg-secondary: #2A2420;
+    --clay-bg-tertiary: #3A3430;
+    --clay-text-primary: #F5F2ED;
+    --clay-text-secondary: #D4C8BC;
+    --clay-text-tertiary: #A89880;
+    --clay-text-light: #7A7470;
+    --clay-text-lighter: #5A5450;
+  }
+}
+
+/* Base Styles */
+body {
+  background-color: var(--clay-bg-primary);
+  color: var(--clay-text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--clay-transition-base),
+    color var(--clay-transition-base);
+}
+
+/* Claymorphism Card Component */
+.clay-card {
+  background: var(--clay-bg-secondary);
+  border: 1px solid var(--clay-border-light);
+  border-radius: var(--clay-radius-lg);
+  padding: var(--clay-spacing-lg);
+  box-shadow: var(--clay-shadow-sm), var(--clay-inset-sm);
+  transition: all var(--clay-transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.clay-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+}
+
+.clay-card:hover {
+  box-shadow: var(--clay-shadow-md), var(--clay-inset-md);
+  transform: translateY(-2px);
+  border-color: var(--clay-border);
+}
+
+.clay-card.elevated {
+  box-shadow: var(--clay-shadow-lg);
+}
+
+/* Claymorphism Button */
+.clay-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--clay-spacing-sm);
+  padding: var(--clay-spacing-md) var(--clay-spacing-lg);
+  border: 1px solid transparent;
+  border-radius: var(--clay-radius-md);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: all var(--clay-transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.clay-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+}
+
+/* Button Variants */
+.clay-button.primary {
+  background: var(--clay-gradient-primary);
+  color: white;
+  box-shadow: var(--clay-shadow-md);
+}
+
+.clay-button.primary:hover {
+  box-shadow: var(--clay-shadow-lg);
+  transform: translateY(-2px);
+}
+
+.clay-button.primary:active {
+  transform: translateY(0);
+  box-shadow: var(--clay-shadow-sm);
+}
+
+.clay-button.secondary {
+  background: var(--clay-bg-tertiary);
+  color: var(--clay-text-primary);
+  border: 1px solid var(--clay-border);
+}
+
+.clay-button.secondary:hover {
+  background: var(--clay-bg-secondary);
+  border-color: var(--clay-border-dark);
+}
+
+.clay-button.accent {
+  background: var(--clay-gradient-warm);
+  color: white;
+  box-shadow: var(--clay-shadow-md);
+}
+
+.clay-button.accent:hover {
+  box-shadow: var(--clay-shadow-lg);
+  transform: translateY(-2px);
+}
+
+/* Claymorphism Input */
+.clay-input {
+  width: 100%;
+  padding: var(--clay-spacing-md) var(--clay-spacing-lg);
+  border: 1px solid var(--clay-border);
+  border-radius: var(--clay-radius-md);
+  background: var(--clay-bg-secondary);
+  color: var(--clay-text-primary);
+  font-size: 0.9375rem;
+  transition: all var(--clay-transition-base);
+  box-shadow: var(--clay-inset-sm);
+}
+
+.clay-input:focus {
+  outline: none;
+  border-color: var(--clay-primary);
+  box-shadow: var(--clay-inset-md), 0 0 0 3px rgba(139, 115, 85, 0.1);
+}
+
+.clay-input::placeholder {
+  color: var(--clay-text-tertiary);
+}
+
+/* Claymorphism Badge */
+.clay-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--clay-spacing-xs);
+  padding: var(--clay-spacing-xs) var(--clay-spacing-md);
+  border-radius: var(--clay-radius-full);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  background: var(--clay-bg-tertiary);
+  color: var(--clay-text-primary);
+  border: 1px solid var(--clay-border);
+}
+
+.clay-badge.primary {
+  background: var(--clay-primary);
+  color: white;
+  border: none;
+}
+
+.clay-badge.success {
+  background: #A8D5BA;
+  color: #1A3A2A;
+  border: none;
+}
+
+.clay-badge.warning {
+  background: #E8C4A0;
+  color: #5A3A1A;
+  border: none;
+}
+
+.clay-badge.danger {
+  background: #D4A5A5;
+  color: #5A2A2A;
+  border: none;
+}
+
+/* Claymorphism Divider */
+.clay-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--clay-border), transparent);
+  margin: var(--clay-spacing-lg) 0;
+}
+
+/* Claymorphism Glass Effect */
+.clay-glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: var(--clay-backdrop-blur);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--clay-radius-lg);
+}
+
+@media (prefers-color-scheme: dark) {
+  .clay-glass {
+    background: rgba(42, 36, 32, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Claymorphism Skeleton Loading */
+.clay-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--clay-bg-tertiary) 0%,
+    var(--clay-bg-secondary) 50%,
+    var(--clay-bg-tertiary) 100%
+  );
+  background-size: 200% 100%;
+  animation: clay-shimmer 2s infinite;
+  border-radius: var(--clay-radius-md);
+}
+
+@keyframes clay-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Claymorphism Tooltip */
+.clay-tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.clay-tooltip .tooltip-text {
+  visibility: hidden;
+  background: var(--clay-bg-dark);
+  color: var(--clay-text-lighter);
+  text-align: center;
+  border-radius: var(--clay-radius-md);
+  padding: var(--clay-spacing-sm) var(--clay-spacing-md);
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 0.8125rem;
+  box-shadow: var(--clay-shadow-lg);
+  opacity: 0;
+  transition: opacity var(--clay-transition-base);
+}
+
+.clay-tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Claymorphism Animation */
+@keyframes clay-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.clay-float {
+  animation: clay-float 3s ease-in-out infinite;
+}
+
+@keyframes clay-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.clay-pulse {
+  animation: clay-pulse 2s ease-in-out infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  :root {
+    --clay-spacing-lg: 1rem;
+    --clay-spacing-xl: 1.5rem;
+  }
+
+  .clay-card {
+    padding: var(--clay-spacing-md);
+  }
+
+  .clay-button {
+    padding: var(--clay-spacing-sm) var(--clay-spacing-md);
+    font-size: 0.875rem;
+  }
+}
