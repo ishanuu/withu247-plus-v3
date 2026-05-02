@@ -3,13 +3,24 @@ import { protectedProcedure, router } from '../_core/trpc';
 import { TRPCError } from '@trpc/server';
 
 // Middleware to check if user is admin
+// CRITICAL FIX #2: Check if ctx.user exists before checking role
 const adminProcedure = protectedProcedure.use(async ({ ctx, next }) => {
-  if (ctx.user?.role !== 'admin') {
+  // First check if user exists
+  if (!ctx.user) {
+    throw new TRPCError({
+      code: 'UNAUTHENTICATED',
+      message: 'Authentication required',
+    });
+  }
+
+  // Then check if user is admin
+  if (ctx.user.role !== 'admin') {
     throw new TRPCError({
       code: 'FORBIDDEN',
       message: 'Admin access required',
     });
   }
+
   return next({ ctx });
 });
 
@@ -63,9 +74,9 @@ export const adminRouter = router({
   tenants: adminProcedure
     .input(
       z.object({
-        limit: z.number().default(10),
-        offset: z.number().default(0),
-        search: z.string().optional(),
+        limit: z.number().min(1).max(100).default(10),
+        offset: z.number().min(0).default(0),
+        search: z.string().max(100).optional(),
         plan: z.enum(['free', 'pro', 'enterprise']).optional(),
         status: z.enum(['active', 'inactive', 'suspended']).optional(),
       })
@@ -189,9 +200,9 @@ export const adminRouter = router({
   users: adminProcedure
     .input(
       z.object({
-        limit: z.number().default(10),
-        offset: z.number().default(0),
-        search: z.string().optional(),
+        limit: z.number().min(1).max(100).default(10),
+        offset: z.number().min(0).default(0),
+        search: z.string().max(100).optional(),
         role: z.enum(['admin', 'user']).optional(),
       })
     )
@@ -287,10 +298,10 @@ export const adminRouter = router({
   auditLogs: adminProcedure
     .input(
       z.object({
-        limit: z.number().default(10),
-        offset: z.number().default(0),
-        action: z.string().optional(),
-        userId: z.string().optional(),
+        limit: z.number().min(1).max(100).default(10),
+        offset: z.number().min(0).default(0),
+        action: z.string().max(100).optional(),
+        userId: z.string().max(100).optional(),
       })
     )
     .query(async ({ ctx, input }) => {
