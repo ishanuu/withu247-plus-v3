@@ -9,6 +9,16 @@ import type { OAuthProfile } from './oauth2';
 import type { Tenant } from './multiTenancy';
 
 describe('Security Tests', () => {
+  const mockTenant: Tenant = {
+    id: 'test-tenant',
+    name: 'Test Tenant',
+    plan: 'pro',
+    rateLimit: 1000,
+    features: ['ai-chat', 'emotion-recognition', 'symptom-analysis'],
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  };
+
   describe('OAuth2 Security', () => {
     const mockProfile: OAuthProfile = {
       id: 'user-123',
