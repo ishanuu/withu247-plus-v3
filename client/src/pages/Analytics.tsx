@@ -57,7 +57,9 @@ export const Analytics: React.FC = () => {
               <div className="h-8 bg-clay-skeleton rounded"></div>
             ) : (
               <p className="text-3xl font-bold text-green-500">
-                {((analytics?.successfulRequests / analytics?.totalRequests) * 100).toFixed(1)}%
+                {analytics?.successfulRequests && analytics?.totalRequests
+                  ? ((analytics.successfulRequests / analytics.totalRequests) * 100).toFixed(1)
+                  : '0'}%
               </p>
             )}
           </ClayCard>

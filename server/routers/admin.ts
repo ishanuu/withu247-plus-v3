@@ -8,7 +8,7 @@ const adminProcedure = protectedProcedure.use(async ({ ctx, next }) => {
   // First check if user exists
   if (!ctx.user) {
     throw new TRPCError({
-      code: 'UNAUTHENTICATED',
+      code: 'UNAUTHORIZED',
       message: 'Authentication required',
     });
   }

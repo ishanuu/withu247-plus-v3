@@ -5,7 +5,8 @@
 
 import passport from 'passport';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
-import { Strategy as GitHubStrategy } from 'passport-github2';
+import GitHubStrategyModule from 'passport-github2';
+const GitHubStrategy = GitHubStrategyModule as any;
 import jwt from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
 

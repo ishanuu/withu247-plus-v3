@@ -8,7 +8,7 @@
  * - Fix #14: Response payload optimization
  */
 
-import { cache } from './cache';
+import { cacheGet, cacheSet, cacheDel } from './cache';
 
 // ============================================================================
 // ANALYTICS CACHING (Fix #11)
@@ -32,7 +32,7 @@ export async function getCachedAnalytics(
   
   try {
     // Try to get from cache first
-    const cached = await cache.get(cacheKey);
+    const cached = await cacheGet(cacheKey);
     if (cached) {
       console.log(`✅ Cache hit for ${cacheKey}`);
       return cached;
@@ -46,7 +46,7 @@ export async function getCachedAnalytics(
 
   // Store in cache for 5 minutes
   try {
-    await cache.set(cacheKey, result, 300);
+    await cacheSet(cacheKey, result, 300);
     console.log(`✅ Cached ${cacheKey} for 5 minutes`);
   } catch (error) {
     console.warn(`⚠️ Cache write error: ${error}`);
