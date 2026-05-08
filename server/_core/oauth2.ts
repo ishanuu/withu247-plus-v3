@@ -40,7 +40,7 @@ export const initializeOAuth2 = (): void => {
         {
           clientID: process.env.GOOGLE_CLIENT_ID,
           clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-          callbackURL: `${process.env.APP_URL || 'http://localhost:3000'}/api/auth/google/callback`,
+          callbackURL: `${process.env.APP_URL || process.env.VITE_FRONTEND_URL}/api/auth/google/callback`,
         },
         async (accessToken: any, refreshToken: any, profile: any, done: any) => {
           try {
@@ -68,7 +68,7 @@ export const initializeOAuth2 = (): void => {
         {
           clientID: process.env.GITHUB_CLIENT_ID,
           clientSecret: process.env.GITHUB_CLIENT_SECRET,
-          callbackURL: `${process.env.APP_URL || 'http://localhost:3000'}/api/auth/github/callback`,
+          callbackURL: `${process.env.APP_URL || process.env.VITE_FRONTEND_URL}/api/auth/github/callback`,
         },
         async (accessToken: any, refreshToken: any, profile: any, done: any) => {
           try {
@@ -112,7 +112,7 @@ export const generateOAuthToken = (profile: OAuthProfile): string => {
       avatar: profile.avatar,
       provider: profile.provider,
     },
-    process.env.JWT_SECRET || 'your-secret-key',
+    process.env.JWT_SECRET || 'CHANGE_ME_IN_PRODUCTION',
     { expiresIn: '7d' }
   );
 
@@ -124,7 +124,7 @@ export const generateOAuthToken = (profile: OAuthProfile): string => {
  */
 export const verifyOAuthToken = (token: string): OAuthProfile | null => {
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key') as any;
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'CHANGE_ME_IN_PRODUCTION') as any;
     return {
       id: decoded.id,
       displayName: decoded.name,
@@ -180,7 +180,7 @@ export const handleOAuthCallback = (req: Request, res: Response): void => {
   const token = generateOAuthToken(profile);
 
   // Redirect to frontend with token
-  const redirectUrl = `${process.env.FRONTEND_URL || 'http://localhost:5173'}/auth/callback?token=${token}`;
+  const redirectUrl = `${process.env.VITE_FRONTEND_URL || process.env.FRONTEND_URL}/auth/callback?token=${token}`;
   res.redirect(redirectUrl);
 };
 
